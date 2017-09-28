@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no">
+	<title>智慧营销网站的微店</title>
+	<link rel="stylesheet" href="http://xhh.wasd1.cn/static/css/base.css">
+	<link rel="stylesheet" href="../css/icon.css">
+	<link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+<div id="home" class="flexv wrap">
+	<div class="flexitemv mainbox">
+		<div class="flexv center head">
+			<h1 class="flex center">欢迎进入小曼的国珍事业</h1>
+			<h2 class="flex center">做直销就上智慧营销网</h2>
+		</div>
+		<div class="flexv box">
+			<div class="flex centerv name">小曼</div>
+			<div class="flex centerv prode">
+				<div class="flex center vip">
+					<i class="flex center zh zh-vip"></i>
+					<span>VIP商家</span>
+				</div>
+				<div class="flex center auth">
+					<i class="flex center zh zh-auth"></i>
+					<span>未认证</span>
+				</div>
+			</div>
+			<a href="javascript:;" class="flex center zan">
+				<i class="flex center zh zh-zan"></i>
+				<em>258</em>
+			</a>
+			<div class="flex center userimg">
+				<img src="../image/banner.jpg" class="fitimg">
+			</div>
+		</div>
+		<div class="around">
+			<a href="javascript:;" class="flex center zh zh-phone contactme" data-way="phone" data-val="未公开此联系方式"></a>
+			<a href="javascript:;" class="flex center zh zh-qq contactme" data-way="qq" data-val="未公开此联系方式"></a>
+			<a href="javascript:;" class="flex center zh zh-weixin contactme" data-way="wechat" data-val="未公开此联系方式" data-src="http://yun.zhzxj.cn/datault/user_qrcode_private.jpg"></a>
+			<a href="javascript:;" class="flex center zh zh-qrcode contactme" data-way="web" data-val="http://s.jiathis.com/qrcode.php?url="></a>
+		</div>
+		<div class="flexitem menu">
+			<ul class="fwrap">
+				<li class="flex center">
+					<a href="shop.html" class="flexv center">
+						<span class="flex"></span>
+						<em class="flex center">我的商城</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="referral.html" class="flexv center">
+						<span class="flex" style="background-position:-3.5rem 0;"></span>
+						<em class="flex center">公司介绍</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="javascript:;" class="flexv center">
+						<span class="flex" style="background-position:-7rem 0;"></span>
+						<em class="flex center">我的动态</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="card.html" class="flexv center">
+						<span class="flex" style="background-position:-10.5rem 0;"></span>
+						<em class="flex center">微名片</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="consult.html" class="flexv center">
+						<span class="flex" style="background-position:-14rem 0;"></span>
+						<em class="flex center">直销咨询</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="javascript:;" class="flexv center">
+						<span class="flex" style="background-position:-17.5rem 0;"></span>
+						<em class="flex center">我的相册</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="javascript:;" class="flexv center">
+						<span class="flex" style="background-position:-21rem 0;"></span>
+						<em class="flex center">学习视频</em>
+					</a>
+				</li>
+				<li class="flex center">
+					<a href="javascript:;" class="flexv center">
+						<span class="flex" style="background-position:-24.5rem 0;"></span>
+						<em class="flex center">给我留言</em>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="flex tabbars">
+		<a href="javascript:;" class="flexv center item">
+			<i class="flex center zh zh-bts"></i>
+			<em class="flex center">我的微站</em>
+		</a>
+		<div class="flexitem center middle">
+			<a href="javascript:;" class="flexv center">
+				<i class="flex center zh zh-plus"></i>
+				<em class="flex center">免费注册微店</em>
+			</a>
+			<span class="shadow"></span>
+		</div>
+		<a href="javascript:;" class="flexv center item">
+			<i class="flex center zh zh-user"></i>
+			<em class="flex center">商家中心</em>
+		</a>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script type="text/javascript" src="../js/contact.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/wxshare.js"></script>
+<script type="text/javascript">
+    if(window != window.top) window.top.location.replace(window.location);
+    $.getJSON($('a.like').attr('data-url'),function (ret){
+        $('a.like').find('em').text(ret.info);
+    });
+    $('a.like').click(function (){
+        if($(this).hasClass('liked') || $(this).hasClass('liking')) return;
+        $(this).addClass('liking');
+        var obj = $(this),url = $(this).attr('data-url'),num = parseInt($(this).text());
+        $.post(url,{},function (ret){
+            obj.removeClass('liking');
+            ret.status ? obj.addClass('liked').find('em').text(num + 1) : showMsg(ret.info,ret.status);
+        },'json');
+    });
+</script>
+</html>
